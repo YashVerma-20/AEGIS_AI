@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+.venv/
+dist/
+dist-ssr/
+
+# Secrets & Config (CRITICAL)
+.env
+.env.local
+backend/.env
+backend/firebase-adminsdk.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# Project Specific Caches & Local Data
+scratch/
+factory_updates_cache.json
+firebase-debug.log
+backend/factory_updates_cache.json
+backend/data/
+backend/local_nodes/
+backend/tfjs_model/
+
+# Large Model Files (Binaries)
+*.h5
+*.keras
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Editor & OS
+.vscode/
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.sw?

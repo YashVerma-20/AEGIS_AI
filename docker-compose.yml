@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: fdm_postgres
+    environment:
+      POSTGRES_USER: fdm_admin
+      POSTGRES_PASSWORD: fdm_secure_password
+      POSTGRES_DB: fdm_metadata
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: unless-stopped
+
+  influxdb:
+    image: influxdb:2.7-alpine
+    container_name: fdm_influxdb
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: fdm_admin
+      DOCKER_INFLUXDB_INIT_PASSWORD: fdm_secure_password
+      DOCKER_INFLUXDB_INIT_ORG: antigravity
+      DOCKER_INFLUXDB_INIT_BUCKET: cmapss_telemetry
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: fdm-super-secret-token-12345
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdata:/var/lib/influxdb2
+      - influxconfig:/etc/influxdb2
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  influxdata:
+  influxconfig:
