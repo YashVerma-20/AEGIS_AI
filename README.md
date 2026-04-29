@@ -1,64 +1,90 @@
-# Aegis Industrial AI | Executive Presentation Guide
+## **AEGIS: Privacy-Preserving Industrial Predictive Maintenance**
+
+**AEGIS** is a decentralized, federated learning platform designed to predict the **Remaining Useful Life (RUL)** of industrial assets, specifically jet engines, without compromising data privacy. By utilizing a **1D-CNN + LSTM hybrid architecture**, AEGIS extracts complex spatial and temporal patterns from high-frequency sensor data while keeping raw datasets isolated at the factory level.
 
 ---
 
-## 📽 Slide 1: The Problem – Industrial Blindness
-*   **The Downtime Crisis**: Unplanned failure costs the global industry **$50B annually**.
-*   **Data Silos**: Valuable sensor data is trapped behind factory firewalls due to privacy concerns.
-*   **Reactive vs. Proactive**: Legacy systems detect failures only *after* they occur, leading to catastrophic asset loss.
+### **🚀 Core Features**
+
+*   **Federated Learning Pipeline:** Implements the **FedAvg** protocol to sync intelligence across global factory nodes without moving raw sensor data.
+*   **Neural Backbone:** A hybrid **1D-Convolutional Neural Network** (for spatial feature extraction) and **Long Short-Term Memory** (for temporal wear modeling).
+*   **Real-Time Monitoring:** Sub-second dashboard updates via **Socket.IO** for live telemetry and RUL countdowns.
+*   **Role-Based Access Control (RBAC):** Strict data isolation between competing industries powered by a secure PostgreSQL backend.
+*   **Industrial Dashboard:** A high-performance **React 19** frontend with a "Dark Industrial" aesthetic optimized for factory floor operations.
 
 ---
 
-## 📽 Slide 2: The Aegis Solution – Federated Intelligence
-*   **Privacy-First AI**: Collaborative learning without raw data movement.
-*   **NASA-Backed Models**: Utilizing high-fidelity C-MAPSS telemetry for RUL (Remaining Useful Life) estimation.
-*   **The Aegis Advantage**: A centralized "Coordinator" that synthesizes global intelligence from local factory insights.
+### **🛠️ Tech Stack**
+
+| Layer | Technology |
+| :--- | :--- |
+| **AI/ML** | Python, TensorFlow/Keras, NumPy, Scikit-Learn |
+| **Backend** | Flask, Socket.IO, PostgreSQL |
+| **Frontend** | React 19, Tailwind CSS, Framer Motion |
+| **Dataset** | NASA C-MAPSS (Turbofan Engine Degradation Simulation) |
 
 ---
 
-## 📽 Slide 3: Core Technology Architecture
-*   **Neural Backbone**: Hybrid 1D-CNN (Temporal Feature Extraction) + LSTM (Long-Term Wear Memory).
-*   **Real-Time Pipeline**: 
-    *   **Flask/Socket.IO**: Sub-second synchronization.
-    *   **React 19**: Ultra-responsive, physics-based visualization.
-*   **Security Layer**: Firebase Auth + JWT-secured WebSocket tunnels.
+### **📂 Project Structure**
+
+```bash
+├── backend/
+│   ├── app.py              # Flask server & Socket.IO events
+│   ├── database/           # PostgreSQL schemas & RBAC logic
+│   └── models/             # 1D-CNN + LSTM architecture
+├── frontend/
+│   ├── src/                # React components (Gauges, Charts)
+│   └── styles/             # Tailwind CSS configurations
+├── federated_logic/
+│   ├── coordinator.py      # FedAvg weight aggregation
+│   └── local_node.py       # Local training & weight extraction
+└── data/
+    └── preprocessing.py    # Min-Max scaling & Sliding Window (n=30)
+```
 
 ---
 
-## 📽 Slide 4: Feature Spotlight – XAI Transparency
-*   **Explainable AI (XAI)**: We don't just predict; we show the *why*.
-*   **Live Activations**: Visualizing neural filter responses to sensor spikes in real-time.
-*   **Bottleneck Analysis**: Inspecting the LSTM temporal accumulators to understand engine degradation stages.
+### **⚙️ Installation & Setup**
+
+1.  **Clone the Repository:**
+    ```bash
+    git clone https://github.com/your-username/aegis-predictive-maintenance.git
+    cd aegis-predictive-maintenance
+    ```
+
+2.  **Setup Backend:**
+    ```bash
+    cd backend
+    pip install -r requirements.txt
+    python app.py
+    ```
+
+3.  **Setup Frontend:**
+    ```bash
+    cd frontend
+    npm install
+    npm run dev
+    ```
 
 ---
 
-## 📽 Slide 5: The Operational Workflow (3-Step Lifecycle)
-1.  **Local Injection**: On-site data processing and normalization.
-2.  **Distributed Training**: Model refinement on the factory edge.
-3.  **Global Aggregation**: Secure weight-merging (FedAvg) to update the global intelligence version.
+### **📊 Data Pipeline Workflow**
+
+1.  **Data Acquisition:** Raw telemetry from **NASA C-MAPSS** sensors is ingested locally.
+2.  **Preprocessing:** Data undergoes Min-Max scaling and is reshaped into 3D tensors `(Samples, Time_Steps, Sensors)`.
+3.  **Local Training:** Each node trains the hybrid model on its private data.
+4.  **Global Sync:** Model weights are sent to the coordinator to update the **Global Brain** ($v1.0.28$) via **FedAvg**.
+5.  **Visualization:** The resulting RUL predictions are pushed to the React dashboard in real-time.
 
 ---
 
-## 📽 Slide 6: Enterprise-Grade Reporting & Auditing
-*   **One-Click PDF Export**: Instant generation of node health snapshots and audit trails.
-*   **Unified Global Visibility**: Industry Partners now possess the same fleet-wide diagnostic transparency as Administrators, enabling cross-node performance benchmarking.
-*   **Sync History**: Traceable model lineage IDs for every version update.
+### **🔒 Security & Privacy**
+
+AEGIS addresses the **$50B Industry Crisis** by breaking "Data Silos". It uses a **Model-to-Data** approach where sensitive telemetry never leaves the factory firewall, ensuring compliance with strict industrial privacy laws.
 
 ---
 
-## 📽 Slide 7: Roadmap – The Future of Aegis
-*   **Autonomous Optimization**: Real-time feedback loops to adjust engine parameters based on RUL.
-*   **Multi-Cloud Uplink**: Dynamic scaling across global data regions.
-*   **Holistic Predictive Maintenance**: Expanding from propulsion to total facility health.
+### **📄 License**
 
----
-
-## 📽 Slide 8: Technical Requirements & Deployment
-*   **Cloud**: Docker-ready Central Coordinator.
-*   **Edge**: Low-latency Node.js/Python environment.
-*   **Security**: Enterprise Firebase Identity Management.
-
----
-
-**Contact: Aegis Strategic Intelligence Team**  
-*Empowering Industry through Decentralized AI*
+This project is licensed under the MIT License - see the LICENSE file for details.
+```
