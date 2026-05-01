@@ -83,8 +83,3 @@
 AEGIS addresses the **$50B Industry Crisis** by breaking "Data Silos". It uses a **Model-to-Data** approach where sensitive telemetry never leaves the factory firewall, ensuring compliance with strict industrial privacy laws.
 
 ---
-
-### **📄 License**
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-```
