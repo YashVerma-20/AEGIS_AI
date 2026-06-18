@@ -14,7 +14,7 @@ export function useAuth() {
         setUser(firebaseUser);
         try {
           const token = await firebaseUser.getIdToken();
-          const res = await fetch('http://127.0.0.1:5000/api/status', {
+          const res = await fetch('https://aegis-ai-backend-mmo5.onrender.com/api/sync-user', {
             headers: { 'Authorization': `Bearer ${token}` }
           });
           if (res.ok) {
