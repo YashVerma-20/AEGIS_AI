@@ -8,3 +8,6 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
+export const API_BASE_URL = window.location.hostname === "localhost" 
+  ? "http://127.0.0.1:5000" 
+  : "https://aegis-ai-backend-mmo5.onrender.com";
